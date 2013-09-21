@@ -1,0 +1,18 @@
+	Jruby community have developed some benchmarks to get the performance of JRuby programs. The JRuby benchamarks are been very much affected by the JVM we use, as ultimately the Ruby code is parsed and converted in Java bite code. So the selection of JVM is also very much important.
+
+Download ruby benchmarks-
+	git clone https://github.com/jruby/rubybench.git
+
+The benchmark I selected for the report are-
+	rubybench/time/bench_neural_net.rb
+	rubybench/time/bench_nsieve.rb
+	rubybench/time/bench_quicksort.rb
+	rubybench/time/bench_red_black.rb
+	rubybench/time/bench_richards.rb
+	rubybench/time/bench_sieve.rb
+	rubybench/time/bench_tak.rb
+	rubybench/time/bench_threaded_reverse.rb
+	rubybench/time/bench_fib_recursive.rb
+	rubybench/ips/bench_fib_complex.rb
+
+You can compare the JRuby with various JVMs and also with Ruby MRI to get the proper comparison.
