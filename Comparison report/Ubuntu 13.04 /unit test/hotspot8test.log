@@ -1,0 +1,20 @@
+Java HotSpot(TM) Client VM warning: You have loaded library /media/Aman/jrubyBuild/jruby1.7.5/lib/jni/x86_64-Linux/libjffi-1.2.so which might have disabled stack guard. The VM will try to fix the stack guard now.
+It's highly recommended that you fix the library with 'execstack -c <libfile>', or link it with '-z noexecstack'.
+Java HotSpot(TM) Client VM warning: You have loaded library /media/Aman/jrubyBuild/jruby1.7.5/lib/jni/x86_64-Linux/libjffi-1.2.so which might have disabled stack guard. The VM will try to fix the stack guard now.
+It's highly recommended that you fix the library with 'execstack -c <libfile>', or link it with '-z noexecstack'.
+/media/Aman/jrubysetup/jruby/spec/mspec/lib/mspec/helpers/ruby_exe.rb:111 warning: executable? does not in this environment and will return a dummy value
+/media/Aman/jrubysetup/jruby/spec/ruby/shared/process/spawn.rb: 1: /media/Aman/jrubysetup/jruby/spec/ruby/shared/process/spawn.rb: describe: not found
+/media/Aman/jrubysetup/jruby/spec/ruby/shared/process/spawn.rb: 2: /media/Aman/jrubysetup/jruby/spec/ruby/shared/process/spawn.rb: before: not found
+/media/Aman/jrubysetup/jruby/spec/ruby/shared/process/spawn.rb: 3: /media/Aman/jrubysetup/jruby/spec/ruby/shared/process/spawn.rb: Syntax error: "(" unexpected
+/media/Aman/jrubysetup/jruby/spec/ruby/shared/process/spawn.rb: 1: /media/Aman/jrubysetup/jruby/spec/ruby/shared/process/spawn.rb: describe: not found
+/media/Aman/jrubysetup/jruby/spec/ruby/shared/process/spawn.rb: 2: /media/Aman/jrubysetup/jruby/spec/ruby/shared/process/spawn.rb: before: not found
+/media/Aman/jrubysetup/jruby/spec/ruby/shared/process/spawn.rb: 3: /media/Aman/jrubysetup/jruby/spec/ruby/shared/process/spawn.rb: Syntax error: "(" unexpected
+
+
+
+
+-----------------------------------------------------
+The rubyspec temp directory is not empty. Ensure that
+all specs are cleaning up temporary files:
+  /media/Aman/jrubysetup/jruby/rubyspec_temp
+-----------------------------------------------------

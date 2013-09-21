@@ -1,0 +1,17 @@
+Script started on Sat Jan  1 02:46:29 2000
+root@beaglebone:/media/Aman/jrubysetup/jruby# ps =ef   -ef | grep script
+root      4912  4799  0 02:46 pts/2    00:00:00 script hotspot7.test
+root      4913  4912  0 02:46 pts/2    00:00:00 script hotspot7.test
+root      4916  4914  0 02:46 pts/3    00:00:00 grep script
+root@beaglebone:/media/Aman/jrubysetup/jruby# jruby spec/mspec/bin/mspec ci -f h &>    > script      ho  hotspot7test.html
+
+-----------------------------------------------------
+The rubyspec temp directory is not empty. Ensure that
+all specs are cleaning up temporary files:
+  /media/Aman/jrubysetup/jruby/rubyspec_temp
+-----------------------------------------------------
+
+root@beaglebone:/media/Aman/jrubysetup/jruby# exit
+exit
+
+Script done on Sat Jan  1 03:28:08 2000

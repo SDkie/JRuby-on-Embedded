@@ -1,0 +1,18 @@
+Compiling 0    java.lang.String.hashCode()I
+Compiling 1    java.lang.Object.<init>()V
+Compiling 2    sun.nio.cs.UTF_8$Encoder.encode([CII[B)I
+Compiling 3    sun.nio.cs.UTF_8$Decoder.decode([BII[C)I
+Compiling 4    java.util.jar.Manifest$FastInputStream.readLine([BII)I
+Compiling 5    org.jruby.RubyBasicObject.getMetaClass()Lorg/jruby/RubyClass;
+Compiling 6    java.lang.String.charAt(I)C
+Compiling 7    java.lang.String.equals(Ljava/lang/Object;)Z
+Compiling 8    org.joni.OptMapInfo.clear()V
+Compiling 9    java.lang.String.replace(CC)Ljava/lang/String;
+Hello World
+Compiling 10    java.lang.String.indexOf(II)I
+Compiling 11    sun.nio.cs.UTF_8$Decoder.decodeArrayLoop(Ljava/nio/ByteBuffer;Ljava/nio/CharBuffer;)Ljava/nio/charset/CoderResult;
+Compiling 12    java.util.HashMap.transfer([Ljava/util/HashMap$Entry;Z)V
+Compiling 13    java.util.LinkedList.indexOf(Ljava/lang/Object;)I
+Compiling 14  E java.io.BufferedReader.readLine(Z)Ljava/lang/String;
+Compiling 15    java.io.UnixFileSystem.normalize(Ljava/lang/String;)Ljava/lang/String;
+

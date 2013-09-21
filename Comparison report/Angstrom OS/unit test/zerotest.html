@@ -1,0 +1,1639 @@
+WARNING: more than one JRuby JAR found in lib directory
+jruby 1.6.8 (ruby-1.8.7-p357) (2013-09-03 0f73d7b) (OpenJDK Zero VM 1.6.0_24) [linux-arm-java]
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Spec Output For jruby (1.8.7)</title>
+<style type="text/css">
+ul {
+  list-style: none;
+}
+.fail {
+  color: red;
+}
+.pass {
+  color: green;
+}
+#details :target {
+  background-color: #ffffe0;
+}
+</style>
+</head>
+<body>
+<div><p>The BEGIN keyword</p>
+<ul>
+<li class="pass">- runs in a new isolated scope</li>
+<li class="pass">- does not access variables outside the eval scope</li>
+<li class="pass">- runs first in a given code unit</li>
+<li class="pass">- runs multiple begins in FIFO order</li>
+</ul>
+</div>
+<div><p>The alias keyword</p>
+<ul>
+<li class="pass">- creates a new name for an existing method</li>
+<li class="pass">- adds the new method to the list of methods</li>
+<li class="pass">- adds the new method to the list of public methods</li>
+<li class="pass">- overwrites an existing method with the target name</li>
+<li class="pass">- is reversible</li>
+<li class="pass">- operates on the object's metaclass when used in instance_eval</li>
+<li class="pass">- operates on methods defined via attr, attr_reader, and attr_accessor</li>
+<li class="pass">- operates on methods with splat arguments</li>
+<li class="pass">- operates on methods with splat arguments on eigenclasses</li>
+<li class="pass">- operates on methods with splat arguments defined in a superclass</li>
+<li class="pass">- operates on methods with splat arguments defined in a superclass using text block for class eval</li>
+<li class="pass">- is not allowed against Fixnum or String instances</li>
+</ul>
+</div>
+<div><p>The '&&' statement</p>
+<ul>
+<li class="pass">- short-circuits evaluation at the first condition to be false</li>
+<li class="pass">- evaluates to the first condition not to be true</li>
+<li class="pass">- evaluates to the last condition if all are true</li>
+<li class="pass">- evaluates the full set of chained conditions during assignment</li>
+<li class="pass">- treats empty expressions as nil</li>
+</ul>
+</div>
+<div><p>The 'and' statement</p>
+<ul>
+<li class="pass">- short-circuits evaluation at the first condition to be false</li>
+<li class="pass">- evaluates to the first condition not to be true</li>
+<li class="pass">- evaluates to the last condition if all are true</li>
+<li class="pass">- when used in assignment, evaluates and assigns expressions individually</li>
+<li class="pass">- treats empty expressions as nil</li>
+</ul>
+</div>
+<div><p>Array literals</p>
+<ul>
+<li class="pass">- [] should return a new array populated with the given elements</li>
+<li class="pass">- [] treats empty expressions as nil elements</li>
+<li class="pass">- [] accepts a literal hash without curly braces as its only parameter</li>
+</ul>
+</div>
+<div><p>Bareword array literal</p>
+<ul>
+<li class="pass">- %w() transforms unquoted barewords into an array</li>
+<li class="pass">- %W() transforms unquoted barewords into an array, supporting interpolation</li>
+<li class="pass">- %W() always treats interpolated expressions as a single word</li>
+<li class="pass">- treats consecutive whitespace characters the same as one</li>
+<li class="pass">- treats whitespace as literals characters when escaped by a backslash</li>
+</ul>
+</div>
+<div><p>The unpacking splat operator (*)</p>
+<ul>
+<li class="pass">- when applied to a literal nested array, unpacks its elements into the containing array</li>
+<li class="pass">- when applied to a nested referenced array, unpacks its elements into the containing array</li>
+<li class="pass">- unpacks the start and count arguments in an array slice assignment</li>
+<li class="pass">- unpacks arguments as if they were listed statically</li>
+<li class="pass">- unpacks a literal array into arguments in a method call</li>
+<li class="pass">- unpacks a referenced array into arguments in a method call</li>
+</ul>
+</div>
+<div><p>The unpacking splat operator (*)</p>
+<ul>
+<li class="pass">- when applied to a non-Array value attempts to coerce it to Array if the object respond_to?(:to_ary)</li>
+<li class="pass">- when applied to a non-Array value uses it unchanged if it does not respond_to?(:to_ary)</li>
+</ul>
+</div>
+<div><p>A block</p>
+<ul>
+<li class="pass">- captures locals from the surrounding scope</li>
+<li class="pass">- allows for a leading space before the arguments</li>
+<li class="pass">- allows to define a block variable with the same name as the enclosing block</li>
+<li class="pass">- overwrites a captured local when used as an argument</li>
+</ul>
+</div>
+<div><p>A block taking zero arguments</p>
+<ul>
+<li class="pass">- does not raise an exception when no values are yielded</li>
+<li class="pass">- does not raise an exception when values are yielded</li>
+</ul>
+</div>
+<div><p>A block taking || arguments</p>
+<ul>
+<li class="pass">- does not raise an exception when no values are yielded</li>
+<li class="pass">- does not raise an exception when values are yielded</li>
+</ul>
+</div>
+<div><p>A block taking |a| arguments</p>
+<ul>
+<li class="pass">- assigns nil to the argument when no values are yielded</li>
+<li class="pass">- assigns the value yielded to the argument</li>
+<li class="pass">- does not call #to_ary to convert a single yielded object to an Array</li>
+<li class="pass">- assigns all the values yielded to the argument as an Array</li>
+<li class="pass">- does not destructure a single Array value</li>
+</ul>
+</div>
+<div><p>A block taking |a, b| arguments</p>
+<ul>
+<li class="pass">- assgins nil to the arguments when no values are yielded</li>
+<li class="pass">- assigns one value yielded to the first argument</li>
+<li class="pass">- assigns the first two values yielded to the arguments</li>
+<li class="pass">- does not destructure an Array value as one of several values yielded</li>
+<li class="pass">- assigns 'nil' and 'nil' to the arguments when a single, empty Array is yielded</li>
+<li class="pass">- assigns the element of a single element Array to the first argument</li>
+<li class="pass">- destructures a single Array value yielded</li>
+<li class="pass">- does not destructure a splatted Array</li>
+<li class="pass">- calls #to_ary to convert a single yielded object to an Array</li>
+<li class="pass">- does not call #to_ary if the single yielded object is an Array</li>
+<li class="pass">- does not call #to_ary if the object does not respond to #to_ary</li>
+<li class="pass">- raises an TypeError if #to_ary does not return an Array</li>
+</ul>
+</div>
+<div><p>A block taking |a, *b| arguments</p>
+<ul>
+<li class="pass">- assigns 'nil' and '[]' to the arguments when no values are yielded</li>
+<li class="pass">- assigns all yielded values after the first to the rest argument</li>
+<li class="pass">- assigns 'nil' and '[]' to the arguments when a single, empty Array is yielded</li>
+<li class="pass">- assigns the element of a single element Array to the first argument</li>
+<li class="pass">- does not destructure a splatted Array</li>
+<li class="pass">- destructures a single Array value assigning the remaining values to the rest argument</li>
+<li class="pass">- calls #to_ary to convert a single yielded object to an Array</li>
+<li class="pass">- does not call #to_ary if the single yielded object is an Array</li>
+<li class="pass">- does not call #to_ary if the object does not respond to #to_ary</li>
+<li class="pass">- raises an TypeError if #to_ary does not return an Array</li>
+</ul>
+</div>
+<div><p>A block taking |*| arguments</p>
+<ul>
+<li class="pass">- does not raise an exception when no values are yielded</li>
+<li class="pass">- does not raise an exception when values are yielded</li>
+<li class="pass">- does not call #to_ary if the single yielded object is an Array</li>
+<li class="pass">- does not call #to_ary if the object does not respond to #to_ary</li>
+</ul>
+</div>
+<div><p>A block taking |*a| arguments</p>
+<ul>
+<li class="pass">- assigns '[]' to the argument when no values are yielded</li>
+<li class="pass">- assigns a single value yielded to the argument as an Array</li>
+<li class="pass">- assigns all the values passed to the argument as an Array</li>
+<li class="pass">- assigns '[[]]' to the argument when passed an empty Array</li>
+<li class="pass">- assigns a single Array value passed to the argument by wrapping it in an Array</li>
+<li class="pass">- does not call #to_ary if the single yielded object is an Array</li>
+<li class="pass">- does not call #to_ary if the object does not respond to #to_ary</li>
+</ul>
+</div>
+<div><p>A block taking |a, | arguments</p>
+<ul>
+<li class="pass">- assigns nil to the argument when no values are yielded</li>
+<li class="pass">- assgins the argument a single value yielded</li>
+<li class="pass">- assigns the argument the first value yielded</li>
+<li class="pass">- assigns the argument the first of several values yielded when it is an Array</li>
+<li class="pass">- assigns nil to the argument when passed an empty Array</li>
+<li class="pass">- assigns the argument the first element of the Array when passed a single Array</li>
+<li class="pass">- calls #to_ary to convert a single yielded object to an Array</li>
+<li class="pass">- does not call #to_ary if the single yielded object is an Array</li>
+<li class="pass">- does not call #to_ary if the object does not respond to #to_ary</li>
+<li class="pass">- raises an TypeError if #to_ary does not return an Array</li>
+</ul>
+</div>
+<div><p>A block taking |(a, b)| arguments</p>
+<ul>
+<li class="pass">- assigns nil to the arguments when yielded no values</li>
+<li class="pass">- destructures a single Array value yielded</li>
+<li class="pass">- destructures a single Array value yielded when shadowing an outer variable</li>
+<li class="pass">- calls #to_ary to convert a single yielded object to an Array</li>
+<li class="pass">- does not call #to_ary if the single yielded object is an Array</li>
+<li class="pass">- does not call #to_ary if the object does not respond to #to_ary</li>
+<li class="pass">- raises an TypeError if #to_ary does not return an Array</li>
+</ul>
+</div>
+<div><p>A block taking |(a, b), c| arguments</p>
+<ul>
+<li class="pass">- assigns nil to the arguments when yielded no values</li>
+<li class="pass">- destructures a single one-level Array value yielded</li>
+<li class="pass">- destructures a single multi-level Array value yielded</li>
+<li class="pass">- calls #to_ary to convert a single yielded object to an Array</li>
+<li class="pass">- does not call #to_ary if the single yielded object is an Array</li>
+<li class="pass">- does not call #to_ary if the object does not respond to #to_ary</li>
+<li class="pass">- raises an TypeError if #to_ary does not return an Array</li>
+</ul>
+</div>
+<div><p>A block taking nested |a, (b, (c, d))|</p>
+<ul>
+<li class="pass">- assigns nil to the arguments when yielded no values</li>
+<li class="pass">- destructures separate yielded values</li>
+<li class="pass">- destructures a single multi-level Array value yielded</li>
+<li class="pass">- destructures a single multi-level Array value yielded</li>
+</ul>
+</div>
+<div><p>A block taking nested |a, ((b, c), d)|</p>
+<ul>
+<li class="pass">- assigns nil to the arguments when yielded no values</li>
+<li class="pass">- destructures separate yielded values</li>
+<li class="pass">- destructures a single multi-level Array value yielded</li>
+<li class="pass">- destructures a single multi-level Array value yielded</li>
+</ul>
+</div>
+<div><p>A block arguments with _</p>
+<ul>
+<li class="pass">- extracts arguments with _</li>
+<li class="pass">- assigns the last variable named</li>
+</ul>
+</div>
+<div><p>Block parameters (to be removed from MRI)</p>
+<ul>
+<li class="pass">- assigns to a global variable</li>
+<li class="pass">- calls method=</li>
+</ul>
+</div>
+<div><p>The break statement in a block</p>
+<ul>
+<li class="pass">- returns nil to method invoking the method yielding to the block when not passed an argument</li>
+<li class="pass">- returns a value to the method invoking the method yielding to the block</li>
+</ul>
+</div>
+<div><p>The break statement in a captured block when the invocation of the scope creating the block is still active</p>
+<ul>
+<li class="pass">- raises a LocalJumpError when invoking the block from the scope creating the block</li>
+<li class="pass">- raises a LocalJumpError when invoking the block from a method</li>
+<li class="pass">- raises a LocalJumpError when yielding to the block</li>
+</ul>
+</div>
+<div><p>The break statement in a captured block from a scope that has returned</p>
+<ul>
+<li class="pass">- raises a LocalJumpError when calling the block from a method</li>
+<li class="pass">- raises a LocalJumpError when yielding to the block</li>
+</ul>
+</div>
+<div><p>The break statement in a lambda when the invocation of the scope creating the lambda is still active</p>
+<ul>
+<li class="pass">- returns nil when not passed an argument</li>
+<li class="pass">- returns a value to the scope creating and calling the lambda</li>
+<li class="pass">- returns a value to the method scope below invoking the lambda</li>
+<li class="pass">- returns a value to a block scope invoking the lambda in a method below</li>
+<li class="pass">- raises a LocalJumpError when yielding to a lambda passed as a block argument</li>
+</ul>
+</div>
+<div><p>The break statement in a lambda created at the toplevel</p>
+<ul>
+<li class="pass">- returns a value when invoking from the toplevel</li>
+<li class="pass">- returns a value when invoking from a method</li>
+<li class="pass">- returns a value when invoking from a block</li>
+</ul>
+</div>
+<div><p>The break statement in a lambda from a scope that has returned</p>
+<ul>
+<li class="pass">- returns a value to the method scope invoking the lambda</li>
+<li class="pass">- returns a value to the block scope invoking the lambda in a method</li>
+<li class="pass">- raises a LocalJumpError when yielding to a lambda passed as a block argument</li>
+</ul>
+</div>
+<div><p>Break inside a while loop</p>
+<ul>
+<li class="pass">- stops a while loop when run</li>
+<li class="pass">- causes a call with a block to return when run</li>
+</ul>
+</div>
+<div><p>Break inside a while loop with a value</p>
+<ul>
+<li class="pass">- exits the loop and returns the value</li>
+</ul>
+</div>
+<div><p>Break inside a while loop with a splat</p>
+<ul>
+<li class="pass">- exits the loop and makes the splat an Array</li>
+<li class="pass">- unwraps the value if there is only one value</li>
+<li class="pass">- makes the value nil if the splat is empty</li>
+</ul>
+</div>
+<div><p>Executing break from within a block</p>
+<ul>
+<li class="pass">- returns from the original invoking method even in case of chained calls</li>
+<li class="pass">- runs ensures when continuing upward</li>
+<li class="pass">- runs ensures when breaking from a loop</li>
+<li class="pass">- doesn't run ensures in the destination method</li>
+</ul>
+</div>
+<div><p>The break statement</p>
+<ul>
+<li class="pass">- raises a LocalJumpError if used not within block or while/for loop</li>
+</ul>
+</div>
+<div><p>The 'case'-construct</p>
+<ul>
+<li class="pass">- evaluates the body of the when clause matching the case target expression</li>
+<li class="pass">- evaluates the body of the when clause whose array expression includes the case target expression</li>
+<li class="pass">- evaluates the body of the when clause in left-to-right order if it's an array expression</li>
+<li class="pass">- evaluates the body of the when clause whose range expression includes the case target expression</li>
+<li class="pass">- returns nil when no 'then'-bodies are given</li>
+<li class="pass">- evaluates the 'else'-body when no other expression matches</li>
+<li class="pass">- returns nil when no expression matches and 'else'-body is empty</li>
+<li class="pass">- returns 2 when a then body is empty</li>
+<li class="pass">- returns the statement following 'then'</li>
+<li class="pass">- tests classes with case equality</li>
+<li class="pass">- tests with matching regexps</li>
+<li class="pass">- does not test with equality when given classes</li>
+<li class="pass">- takes lists of values</li>
+<li class="pass">- expands arrays to lists of values</li>
+<li class="pass">- takes an expanded array in addition to a list of values</li>
+<li class="pass">- concats arrays before expanding them</li>
+<li class="pass">- never matches when clauses with no values</li>
+<li class="pass">- lets you define a method after the case statement</li>
+<li class="pass">- raises a SyntaxError when 'else' is used when no 'when' is given</li>
+<li class="pass">- raises a SyntaxError when 'else' is used before a 'when' was given</li>
+<li class="pass">- supports nested case statements</li>
+<li class="pass">- supports nested case statements followed by a when with a splatted array</li>
+<li class="pass">- supports nested case statements followed by a when with a splatted non-array</li>
+<li class="pass">- works even if there's only one when statement</li>
+</ul>
+</div>
+<div><p>The 'case'-construct with no target expression</p>
+<ul>
+<li class="pass">- evaluates the body of the first clause when at least one of its condition expressions is true</li>
+<li class="pass">- evaluates the body of the first when clause that is not false/nil</li>
+<li class="pass">- evaluates the body of the else clause if all when clauses are false/nil</li>
+<li class="pass">- evaluates multiple conditional expressions as a boolean disjunction</li>
+<li class="pass">- evaluates true as only 'true' when true is the first clause</li>
+<li class="pass">- evaluates false as only 'false' when false is the first clause</li>
+<li class="pass">- treats a literal array as its own when argument, rather than a list of arguments</li>
+</ul>
+</div>
+<div><p>The 'case'-construct</p>
+<ul>
+<li class="pass">- returns the statement following ':'</li>
+<li class="pass">- allows mixing ':' and 'then'</li>
+</ul>
+</div>
+<div><p>A class definition</p>
+<ul>
+<li class="pass">- creates a new class</li>
+<li class="pass">- has no class variables</li>
+<li class="pass">- raises TypeError if constant given as class name exists and is not a Module</li>
+<li class="pass">- raises TypeError if the constant qualifying the class is nil</li>
+<li class="pass">- raises TypeError if any constant qualifying the class is not a Module</li>
+<li class="pass">- allows using self as the superclass if self is a class</li>
+<li class="pass">- raises a TypeError if inheriting from a metaclass</li>
+<li class="pass">- allows the declaration of class variables in the body</li>
+<li class="pass">- stores instance variables defined in the class body in the class object</li>
+<li class="pass">- allows the declaration of class variables in a class method</li>
+<li class="pass">- allows the definition of class-level instance variables in a class method</li>
+<li class="pass">- allows the declaration of class variables in an instance method</li>
+<li class="pass">- allows the definition of instance methods</li>
+<li class="pass">- allows the definition of class methods</li>
+<li class="pass">- allows the definition of class methods using class << self</li>
+<li class="pass">- allows the definition of Constants</li>
+<li class="pass">- returns the value of the last statement in the body</li>
+</ul>
+</div>
+<div><p>An outer class definition</p>
+<ul>
+<li class="pass">- contains the inner classes</li>
+</ul>
+</div>
+<div><p>A class definition extending an object (sclass)</p>
+<ul>
+<li class="pass">- allows adding methods</li>
+<li class="pass">- raises a TypeError when trying to extend numbers</li>
+<li class="pass">- allows accessing the block of the original scope</li>
+<li class="pass">- can use return to cause the enclosing method to return</li>
+</ul>
+</div>
+<div><p>Reopening a class</p>
+<ul>
+<li class="pass">- extends the previous definitions</li>
+<li class="pass">- overwrites existing methods</li>
+<li class="pass">- raises a TypeError when superclasses mismatch</li>
+<li class="pass">- adds new methods to subclasses</li>
+</ul>
+</div>
+<div><p>class provides hooks</p>
+<ul>
+<li class="pass">- calls inherited when a class is created</li>
+</ul>
+</div>
+<div><p>A class variable</p>
+<ul>
+<li class="pass">- can be accessed from a subclass</li>
+<li class="pass">- is set in the superclass</li>
+</ul>
+</div>
+<div><p>A class variable defined in a module</p>
+<ul>
+<li class="pass">- can be accessed from classes that extend the module</li>
+<li class="pass">- is not defined in these classes</li>
+<li class="pass">- is only updated in the module a method defined in the module is used</li>
+<li class="pass">- is updated in the class when a Method defined in the class is used</li>
+<li class="pass">- can be accessed inside the class using the module methods</li>
+<li class="pass">- can be accessed from modules that extend the module</li>
+<li class="pass">- is defined in the extended module</li>
+<li class="pass">- is not defined in the extending module</li>
+</ul>
+</div>
+<div><p>Literal (A::X) constant resolution</p>
+<ul>
+<li class="pass">- raises a NameError if no constant is defined in the search path</li>
+<li class="pass">- sends #const_missing to the original class or module scope</li>
+<li class="pass">- evaluates the qualifier</li>
+<li class="pass">- raises a TypeError if a non-class or non-module qualifier is given</li>
+</ul>
+</div>
+<div><p>Literal (A::X) constant resolution with statically assigned constants</p>
+<ul>
+<li class="pass">- searches the immediate class or module scope first</li>
+<li class="pass">- searches a module included in the immediate class before the superclass</li>
+<li class="pass">- searches the superclass before a module included in the superclass</li>
+<li class="pass">- searches a module included in the superclass</li>
+<li class="pass">- searches the superclass chain</li>
+<li class="pass">- searches Object if no class or module qualifier is given</li>
+<li class="pass">- searches Object after searching other scopes</li>
+<li class="pass">- searches Object if a toplevel qualifier (::X) is given</li>
+<li class="pass">- does not search the singleton class of the class or module</li>
+</ul>
+</div>
+<div><p>Literal (A::X) constant resolution with dynamically assigned constants</p>
+<ul>
+<li class="pass">- searches the immediate class or module scope first</li>
+<li class="pass">- searches a module included in the immediate class before the superclass</li>
+<li class="pass">- searches the superclass before a module included in the superclass</li>
+<li class="pass">- searches a module included in the superclass</li>
+<li class="pass">- searches the superclass chain</li>
+<li class="pass">- searches Object if no class or module qualifier is given</li>
+<li class="pass">- searches Object if a toplevel qualifier (::X) is given</li>
+<li class="pass">- does not search the singleton class of the class or module</li>
+<li class="pass">- returns the updated value when a constant is reassigned</li>
+<li class="pass">- evaluates the right hand side before evaluating a constant path</li>
+</ul>
+</div>
+<div><p>Constant resolution within methods</p>
+<ul>
+<li class="pass">- raises a NameError if no constant is defined in the search path</li>
+<li class="pass">- sends #const_missing to the original class or module scope</li>
+</ul>
+</div>
+<div><p>Constant resolution within methods with statically assigned constants</p>
+<ul>
+<li class="pass">- searches the immediate class or module scope first</li>
+<li class="pass">- searches a module included in the immediate class before the superclass</li>
+<li class="pass">- searches the superclass before a module included in the superclass</li>
+<li class="pass">- searches a module included in the superclass</li>
+<li class="pass">- searches the superclass chain</li>
+<li class="pass">- searches the lexical scope of the method not the receiver's immediate class</li>
+<li class="pass">- searches the lexical scope of a singleton method</li>
+<li class="pass">- does not search the lexical scope of the caller</li>
+<li class="pass">- searches the lexical scope of a block</li>
+<li class="pass">- searches Object as a lexical scope only if Object is explicitly opened</li>
+<li class="pass">- does not search the lexical scope of qualifying modules</li>
+</ul>
+</div>
+<div><p>Constant resolution within methods with dynamically assigned constants</p>
+<ul>
+<li class="pass">- searches the immediate class or module scope first</li>
+<li class="pass">- searches a module included in the immediate class before the superclass</li>
+<li class="pass">- searches the superclass before a module included in the superclass</li>
+<li class="pass">- searches a module included in the superclass</li>
+<li class="pass">- searches the superclass chain</li>
+<li class="pass">- searches the lexical scope of the method not the receiver's immediate class</li>
+<li class="pass">- searches the lexical scope of a singleton method</li>
+<li class="pass">- does not search the lexical scope of the caller</li>
+<li class="pass">- searches the lexical scope of a block</li>
+<li class="pass">- searches Object as a lexical scope only if Object is explicitly opened</li>
+<li class="pass">- returns the updated value when a constant is reassigned</li>
+<li class="pass">- does not search the lexical scope of qualifying modules</li>
+</ul>
+</div>
+<div><p>Redefining a method</p>
+<ul>
+<li class="pass">- replaces the original method</li>
+</ul>
+</div>
+<div><p>Defining an 'initialize' method</p>
+<ul>
+<li class="pass">- sets the method's visibility to private</li>
+</ul>
+</div>
+<div><p>Defining an 'initialize_copy' method</p>
+<ul>
+<li class="pass">- sets the method's visibility to private</li>
+</ul>
+</div>
+<div><p>An instance method definition with a splat</p>
+<ul>
+<li class="pass">- accepts an unnamed '*' argument</li>
+<li class="pass">- accepts a named * argument</li>
+<li class="pass">- accepts non-* arguments before the * argument</li>
+<li class="pass">- allows only a single * argument</li>
+<li class="pass">- requires the presence of any arguments that precede the *</li>
+</ul>
+</div>
+<div><p>An instance method with a default argument</p>
+<ul>
+<li class="pass">- evaluates the default when no arguments are passed</li>
+<li class="pass">- evaluates the default empty expression when no arguments are passed</li>
+<li class="pass">- assigns an empty Array to an unused splat argument</li>
+<li class="pass">- evaluates the default when required arguments precede it</li>
+<li class="pass">- prefers to assign to a default argument before a splat argument</li>
+<li class="pass">- prefers to assign to a default argument when there are no required arguments</li>
+<li class="pass">- does not evaluate the default when passed a value and a * argument</li>
+</ul>
+</div>
+<div><p>A singleton method definition</p>
+<ul>
+<li class="pass">- can be declared for a local variable</li>
+<li class="pass">- can be declared for an instance variable</li>
+<li class="pass">- can be declared for a global variable</li>
+<li class="pass">- can be declared for a class variable</li>
+<li class="pass">- can be declared with an empty method body</li>
+<li class="pass">- can be redefined</li>
+<li class="pass">- raises TypeError if frozen</li>
+</ul>
+</div>
+<div><p>Redefining a singleton method</p>
+<ul>
+<li class="pass">- does not inherit a previously set visibility </li>
+</ul>
+</div>
+<div><p>Redefining a singleton method</p>
+<ul>
+<li class="pass">- does not inherit a previously set visibility </li>
+</ul>
+</div>
+<div><p>A method defined with extreme default arguments</p>
+<ul>
+<li class="pass">- can redefine itself when the default is evaluated</li>
+<li class="pass">- may use an fcall as a default</li>
+<li class="pass">- evaluates the defaults in the method's scope</li>
+<li class="pass">- may use preceding arguments as defaults</li>
+<li class="pass">- may use a lambda as a default</li>
+</ul>
+</div>
+<div><p>A singleton method defined with extreme default arguments</p>
+<ul>
+<li class="pass">- may use a method definition as a default</li>
+<li class="pass">- may use an fcall as a default</li>
+<li class="pass">- evaluates the defaults in the singleton scope</li>
+<li class="pass">- may use preceding arguments as defaults</li>
+<li class="pass">- may use a lambda as a default</li>
+</ul>
+</div>
+<div><p>A method definition inside a metaclass scope</p>
+<ul>
+<li class="pass">- can create a class method</li>
+<li class="pass">- can create a singleton method</li>
+<li class="pass">- raises TypeError if frozen</li>
+</ul>
+</div>
+<div><p>A nested method definition</p>
+<ul>
+<li class="pass">- creates an instance method when evaluated in an instance method</li>
+<li class="pass">- creates a class method when evaluated in a class method</li>
+<li class="pass">- creates a singleton method when evaluated in the metaclass of an instance</li>
+</ul>
+</div>
+<div><p>A method definition inside an instance_eval</p>
+<ul>
+<li class="pass">- creates a singleton method</li>
+<li class="pass">- creates a singleton method when evaluated inside a metaclass</li>
+<li class="pass">- creates a class method when the receiver is a class</li>
+</ul>
+</div>
+<div><p>A method definition in an eval</p>
+<ul>
+<li class="pass">- creates an instance method</li>
+<li class="pass">- creates a class method</li>
+<li class="pass">- creates a singleton method</li>
+</ul>
+</div>
+<div><p>a method definition that sets more than one default parameter all to the same value</p>
+<ul>
+<li class="pass">- assigns them all the same object by default</li>
+<li class="pass">- allows the first argument to be given, and sets the rest to null</li>
+<li class="pass">- assigns the parameters different objects across different default calls</li>
+<li class="pass">- only allows overriding the default value of the first such parameter in each set</li>
+<li class="pass">- treats the argument after the multi-parameter normally</li>
+</ul>
+</div>
+<div><p>The def keyword within a closure</p>
+<ul>
+<li class="pass">- looks outside the closure for the visibility</li>
+</ul>
+</div>
+<div><p>An instance method definition with a splat</p>
+<ul>
+<li class="pass">- creates a method that can be invoked with an inline hash argument</li>
+<li class="pass">- creates a method that can be invoked with an inline hash and a block</li>
+</ul>
+</div>
+<div><p>The defined? keyword for literals</p>
+<ul>
+<li class="pass">- returns 'self' for self</li>
+<li class="pass">- returns 'nil' for nil</li>
+<li class="pass">- returns 'true' for true</li>
+<li class="pass">- returns 'false' for false</li>
+</ul>
+</div>
+<div><p>The defined? keyword when called with a method name without a receiver</p>
+<ul>
+<li class="pass">- returns 'method' if the method is defined</li>
+<li class="pass">- returns nil if the method is not defined</li>
+<li class="pass">- returns 'method' if the method is defined and private</li>
+<li class="pass">- returns 'method' if the predicate method is defined and private</li>
+</ul>
+</div>
+<div><p>The defined? keyword when called with a method name having a module as receiver</p>
+<ul>
+<li class="pass">- returns 'method' if the method is defined</li>
+<li class="pass">- returns nil if the method is private</li>
+<li class="pass">- returns nil if the method is protected</li>
+<li class="pass">- returns nil if the method is not defined</li>
+<li class="pass">- returns nil if the class is not defined</li>
+<li class="pass">- returns nil if the subclass is not defined</li>
+</ul>
+</div>
+<div><p>The defined? keyword when called with a method name having a local variable as receiver</p>
+<ul>
+<li class="pass">- returns 'method' if the method is defined</li>
+<li class="pass">- returns nil if the method is not defined</li>
+<li class="pass">- returns nil if the variable does not exist</li>
+</ul>
+</div>
+<div><p>The defined? keyword when called with a method name having an instance variable as receiver</p>
+<ul>
+<li class="pass">- returns 'method' if the method is defined</li>
+<li class="pass">- returns nil if the method is not defined</li>
+<li class="pass">- returns nil if the variable does not exist</li>
+</ul>
+</div>
+<div><p>The defined? keyword when called with a method name having a global variable as receiver</p>
+<ul>
+<li class="pass">- returns 'method' if the method is defined</li>
+<li class="pass">- returns nil if the method is not defined</li>
+<li class="pass">- returns nil if the variable does not exist</li>
+</ul>
+</div>
+<div><p>The defined? keyword when called with a method name having a class variable as receiver</p>
+<ul>
+<li class="pass">- returns 'method' if the method is defined</li>
+<li class="pass">- returns nil if the method is not defined</li>
+<li class="pass">- returns nil if the variable does not exist</li>
+</ul>
+</div>
+<div><p>The defined? keyword when called with a method name having a method call as a receiver</p>
+<ul>
+<li class="pass">- returns nil if evaluating the receiver raises an exception</li>
+<li class="pass">- returns nil if the method is not defined on the object the receiver returns</li>
+<li class="pass">- returns 'method' if the method is defined on the object the receiver returns</li>
+</ul>
+</div>
+<div><p>The defined? keyword for an expression</p>
+<ul>
+<li class="pass">- returns 'assignment' for assigning a local variable</li>
+<li class="pass">- returns 'assignment' for assigning an instance variable</li>
+<li class="pass">- returns 'assignment' for assigning a global variable</li>
+<li class="pass">- returns 'assignment' for assigning a class variable</li>
+<li class="pass">- returns 'assignment' for assigning multiple variables</li>
+<li class="pass">- returns 'assignment' for an expression with '%='</li>
+<li class="pass">- returns 'assignment' for an expression with '/='</li>
+<li class="pass">- returns 'assignment' for an expression with '-='</li>
+<li class="pass">- returns 'assignment' for an expression with '+='</li>
+<li class="pass">- returns 'assignment' for an expression with '*='</li>
+<li class="pass">- returns 'assignment' for an expression with '|='</li>
+<li class="pass">- returns 'assignment' for an expression with '&='</li>
+<li class="pass">- returns 'assignment' for an expression with '^='</li>
+<li class="pass">- returns 'assignment' for an expression with '~='</li>
+<li class="pass">- returns 'assignment' for an expression with '<<='</li>
+<li class="pass">- returns 'assignment' for an expression with '>>='</li>
+<li class="pass">- returns 'assignment' for an expression with '||='</li>
+<li class="pass">- returns 'assignment' for an expression with '&&='</li>
+<li class="pass">- returns 'assignment' for an expression with '**='</li>
+<li class="pass">- returns nil for an expression with == and an undefined method</li>
+<li class="pass">- returns nil for an expression with != and an undefined method</li>
+<li class="pass">- returns nil for an expression with !~ and an undefined method</li>
+<li class="pass">- returns 'method' for an expression with '=='</li>
+<li class="pass">- returns 'expression' for an expression with '!='</li>
+<li class="pass">- returns 'expression' for an expression with '!~'</li>
+<li class="pass">- returns 'expression' when passed a String</li>
+<li class="pass">- returns 'expression' when passed a Fixnum literal</li>
+<li class="pass">- returns 'expression' when passed a Bignum literal</li>
+<li class="pass">- returns 'expression' when passed a Float literal</li>
+<li class="pass">- returns 'expression' when passed a Range literal</li>
+<li class="pass">- returns 'expression' when passed a Regexp literal</li>
+<li class="pass">- returns 'expression' when passed an Array literal</li>
+<li class="pass">- returns 'expression' when passed a Hash literal</li>
+<li class="pass">- returns 'expression' when passed a Symbol literal</li>
+</ul>
+</div>
+<div><p>The defined? keyword for an expression with logical connectives</p>
+<ul>
+<li class="pass">- returns nil for an expression with '!' and an undefined method</li>
+<li class="pass">- returns nil for an expression with '!' and an unset class variable</li>
+<li class="pass">- returns nil for an expression with 'not' and an undefined method</li>
+<li class="pass">- returns nil for an expression with 'not' and an unset class variable</li>
+<li class="pass">- does not propagate an exception raised by a method in a 'not' expression</li>
+<li class="pass">- returns 'expression' for an expression with '&&/and' and an unset global variable</li>
+<li class="pass">- returns 'expression' for an expression with '&&/and' and an unset instance variable</li>
+<li class="pass">- returns 'expression' for an expression '&&/and' regardless of its truth value</li>
+<li class="pass">- returns 'expression' for an expression with '||/or' and an unset global variable</li>
+<li class="pass">- returns 'expression' for an expression with '||/or' and an unset instance variable</li>
+<li class="pass">- returns 'expression' for an expression '||/or' regardless of its truth value</li>
+<li class="pass">- returns 'expression' for an expression with '!' and an unset global variable</li>
+<li class="pass">- returns 'expression' for an expression with '!' and an unset instance variable</li>
+<li class="pass">- calls a method in a 'not' expression and returns 'expression'</li>
+<li class="pass">- returns 'expression' for an expression with 'not' and an unset global variable</li>
+<li class="pass">- returns 'expression' for an expression with 'not' and an unset instance variable</li>
+<li class="pass">- returns nil for an expression with '&&/and' and an undefined method</li>
+<li class="pass">- returns nil for an expression with '&&/and' and an unset class variable</li>
+<li class="pass">- does not propagate an exception raised by a method in an '&&' expression</li>
+<li class="pass">- calls a method in an '&&' expression and returns 'expression'</li>
+<li class="pass">- does not propagate an exception raised by a method in an 'and' expression</li>
+<li class="pass">- calls a method in an 'and' expression and returns 'expression'</li>
+<li class="pass">- returns nil for an expression with '||/or' and an undefined method</li>
+<li class="pass">- returns nil for an expression with '||/or' and an unset class variable</li>
+<li class="pass">- does not propagate an exception raised by a method in an '||' expression</li>
+<li class="pass">- calls a method in an '||' expression and returns 'expression'</li>
+<li class="pass">- does not propagate an exception raised by a method in an 'or' expression</li>
+<li class="pass">- calls a method in an 'or' expression and returns 'expression'</li>
+</ul>
+</div>
+<div><p>The defined? keyword for an expression with a dynamic String</p>
+<ul>
+<li class="pass">- returns 'expression' when the String contains a literal</li>
+<li class="pass">- returns 'expression' when the String contains a call to a defined method</li>
+<li class="pass">- returns nil when the String contains a call to an undefined method</li>
+<li class="pass">- calls the method in the String</li>
+<li class="pass">- returns nil if any of the interpolated method calls are undefined</li>
+<li class="pass">- returns nil and stops processing if any of the interpolated method calls are undefined</li>
+</ul>
+</div>
+<div><p>The defined? keyword for an expression with a dynamic Regexp</p>
+<ul>
+<li class="pass">- returns 'expression' when the Regexp contains a literal</li>
+<li class="pass">- returns 'expression' when the Regexp contains a call to a defined method</li>
+<li class="pass">- returns nil when the Regexp contains a call to an undefined method</li>
+<li class="pass">- calls the method in the Regexp</li>
+<li class="pass">- returns nil if any of the interpolated method calls are undefined</li>
+<li class="pass">- returns nil and stops processing if any of the interpolated method calls are undefined</li>
+</ul>
+</div>
+<div><p>The defined? keyword for variables</p>
+<ul>
+<li class="pass">- returns 'local-variable' when called with the name of a local variable</li>
+<li class="pass">- returns nil for an instance variable that has not been read</li>
+<li class="pass">- returns nil for an instance variable that has been read but not assigned to</li>
+<li class="pass">- returns 'instance-variable' for an instance variable that has been assigned</li>
+<li class="pass">- returns nil for a global variable that has not been read</li>
+<li class="pass">- returns nil for a global variable that has been read but not assigned to</li>
+<li class="pass">- returns 'global-variable' for $!</li>
+<li class="pass">- returns 'global-variable for $~</li>
+<li class="pass">- returns 'global-variable' for a global variable that has been assigned</li>
+<li class="pass">- returns nil for a class variable that has not been read</li>
+<li class="pass">- returns 'class variable' when called with the name of a class variable</li>
+<li class="pass">- returns 'local-variable(in-block)' when called with the name of a block local</li>
+</ul>
+</div>
+<div><p>The defined? keyword for variables when a String does not match a Regexp</p>
+<ul>
+<li class="pass">- returns 'global-variable' for $~</li>
+<li class="pass">- returns nil for $&</li>
+<li class="pass">- returns nil for $`</li>
+<li class="pass">- returns nil for $'</li>
+<li class="pass">- returns nil for $+</li>
+<li class="pass">- returns nil for $1-$9</li>
+</ul>
+</div>
+<div><p>The defined? keyword for variables when a String matches a Regexp</p>
+<ul>
+<li class="pass">- returns 'global-variable' for $~</li>
+<li class="pass">- returns 'global-variable' for $&</li>
+<li class="pass">- returns 'global-variable' for $`</li>
+<li class="pass">- returns 'global-variable' for $'</li>
+<li class="pass">- returns 'global-variable' for $+</li>
+<li class="pass">- returns 'global-variable' for the capture references</li>
+<li class="pass">- returns nil for non-captures</li>
+</ul>
+</div>
+<div><p>The defined? keyword for variables when a Regexp does not match a String</p>
+<ul>
+<li class="pass">- returns 'global-variable' for $~</li>
+<li class="pass">- returns nil for $&</li>
+<li class="pass">- returns nil for $`</li>
+<li class="pass">- returns nil for $'</li>
+<li class="pass">- returns nil for $+</li>
+<li class="pass">- returns nil for $1-$9</li>
+</ul>
+</div>
+<div><p>The defined? keyword for variables when a Regexp matches a String</p>
+<ul>
+<li class="pass">- returns 'global-variable' for $~</li>
+<li class="pass">- returns 'global-variable' for $&</li>
+<li class="pass">- returns 'global-variable' for $`</li>
+<li class="pass">- returns 'global-variable' for $'</li>
+<li class="pass">- returns 'global-variable' for $+</li>
+<li class="pass">- returns 'global-variable' for the capture references</li>
+<li class="pass">- returns nil for non-captures</li>
+</ul>
+</div>
+<div><p>The defined? keyword for a simple constant</p>
+<ul>
+<li class="pass">- returns 'constant' when the constant is defined</li>
+<li class="pass">- returns nil when the constant is not defined</li>
+<li class="pass">- does not call Object.const_missing if the constant is not defined</li>
+<li class="pass">- returns 'constant' for an included module</li>
+<li class="pass">- returns 'constant' for a constant defined in an included module</li>
+</ul>
+</div>
+<div><p>The defined? keyword for a top-level constant</p>
+<ul>
+<li class="pass">- returns 'constant' when passed the name of a top-level constant</li>
+<li class="pass">- retuns nil if the constant is not defined</li>
+<li class="pass">- does not call Object.const_missing if the constant is not defined</li>
+</ul>
+</div>
+<div><p>The defined? keyword for a scoped constant</p>
+<ul>
+<li class="pass">- returns 'constant' when the scoped constant is defined</li>
+<li class="pass">- returns nil when the scoped constant is not defined</li>
+<li class="pass">- calls .const_missing if the parent to the constant is not defined</li>
+<li class="pass">- calls .const_missing for the parent and uses the return constant for scope</li>
+<li class="pass">- does not call .const_missing if the constant is not defined</li>
+<li class="pass">- returns nil when an undefined constant is scoped to a defined constant</li>
+<li class="pass">- returns nil when the undefined constant is scoped to an undefined constant</li>
+<li class="pass">- return 'constant' if the scoped-scoped constant is defined</li>
+</ul>
+</div>
+<div><p>The defined? keyword for a scoped constant when the scope chain has undefined constants</p>
+<ul>
+<li class="pass">- calls .const_missing for each constant in the scope chain and returns nil if any are not defined</li>
+<li class="pass">- calls .const_missing and returns 'constant' if all constants are defined</li>
+</ul>
+</div>
+<div><p>The defined? keyword for a top-level scoped constant</p>
+<ul>
+<li class="pass">- returns 'constant' when the scoped constant is defined</li>
+<li class="pass">- returns nil when the scoped constant is not defined</li>
+<li class="pass">- calls .const_missing if the constant is not defined</li>
+<li class="pass">- calls .const_missing and uses the return constant for scope</li>
+<li class="pass">- returns nil when an undefined constant is scoped to a defined constant</li>
+<li class="pass">- returns nil when the undefined constant is scoped to an undefined constant</li>
+<li class="pass">- return 'constant' if the scoped-scoped constant is defined</li>
+</ul>
+</div>
+<div><p>The defined? keyword for a top-level scoped constant when the scope chain has undefined constants</p>
+<ul>
+<li class="pass">- calls .const_missing for each constant in the scope chain and returns nil if any are not defined</li>
+<li class="pass">- calls .const_missing and returns 'constant' if all constants are defined</li>
+</ul>
+</div>
+<div><p>The defined? keyword for a self-send method call scoped constant</p>
+<ul>
+<li class="pass">- returns nil if the constant is not defined in the scope of the method's value</li>
+<li class="pass">- returns 'constant' if the constant is defined in the scope of the method's value</li>
+<li class="pass">- returns nil if the last constant is not defined in the scope chain</li>
+<li class="pass">- returns nil if the middle constant is not defined in the scope chain</li>
+<li class="pass">- returns 'constant' if all the constants in the scope chain are defined</li>
+</ul>
+</div>
+<div><p>The defined? keyword for a receiver method call scoped constant</p>
+<ul>
+<li class="pass">- returns nil if the constant is not defined in the scope of the method's value</li>
+<li class="pass">- returns 'constant' if the constant is defined in the scope of the method's value</li>
+<li class="pass">- returns nil if the last constant is not defined in the scope chain</li>
+<li class="pass">- returns nil if the middle constant is not defined in the scope chain</li>
+<li class="pass">- returns 'constant' if all the constants in the scope chain are defined</li>
+</ul>
+</div>
+<div><p>The defined? keyword for a module method call scoped constant</p>
+<ul>
+<li class="pass">- returns nil if the constant is not defined in the scope of the method's value</li>
+<li class="pass">- returns 'constant' if the constant scoped by the method's value is defined</li>
+<li class="pass">- returns nil if the last constant in the scope chain is not defined</li>
+<li class="pass">- returns nil if the middle constant in the scope chain is not defined</li>
+<li class="pass">- returns 'constant' if all the constants in the scope chain are defined</li>
+<li class="pass">- returns nil if the outer scope constant in the receiver is not defined</li>
+<li class="pass">- returns nil if the scoped constant in the receiver is not defined</li>
+<li class="pass">- returns 'constant' if all the constants in the receiver are defined</li>
+<li class="pass">- returns 'constant' if all the constants in the receiver and scope chain are defined</li>
+</ul>
+</div>
+<div><p>The defined? keyword for a variable scoped constant</p>
+<ul>
+<li class="pass">- returns nil if the scoped constant is not defined</li>
+<li class="pass">- returns 'constant' if the constant is defined in the scope of the variable reference</li>
+<li class="pass">- returns nil if the scoped constant is not defined</li>
+<li class="pass">- returns 'constant' if the constant is defined in the scope of the variable reference</li>
+<li class="pass">- returns nil if the scoped constant is not defined</li>
+<li class="pass">- returns 'constant' if the constant is defined in the scope of the variable reference</li>
+<li class="pass">- returns nil if the scoped constant is not defined</li>
+<li class="pass">- returns 'constant' if the constant is defined in the scope of the variable reference</li>
+</ul>
+</div>
+<div><p>The defined? keyword for a self:: scoped constant</p>
+<ul>
+<li class="pass">- returns 'constant' for a constant explicitly scoped to self:: when set</li>
+<li class="pass">- returns 'constant' for a constant explicitly scoped to self:: in subclass's metaclass</li>
+</ul>
+</div>
+<div><p>The defined? keyword for yield</p>
+<ul>
+<li class="pass">- returns nil if no block is passed to a method not taking a block parameter</li>
+<li class="pass">- returns nil if no block is passed to a method taking a block parameter</li>
+<li class="pass">- returns 'yield' if a block is passed to a method not taking a block parameter</li>
+<li class="pass">- returns 'yield' if a block is passed to a method taking a block parameter</li>
+</ul>
+</div>
+<div><p>The defined? keyword for super</p>
+<ul>
+<li class="pass">- returns nil when a superclass undef's the method</li>
+</ul>
+</div>
+<div><p>The defined? keyword for super for a method taking no arguments</p>
+<ul>
+<li class="pass">- returns nil when no superclass method exists</li>
+<li class="pass">- returns nil from a block when no superclass method exists</li>
+<li class="pass">- returns nil from a #define_method when no superclass method exists</li>
+<li class="pass">- returns nil from a block in a #define_method when no superclass method exists</li>
+<li class="pass">- returns 'super' when a superclass method exists</li>
+<li class="pass">- returns 'super' from a #define_method when a superclass method exists</li>
+<li class="pass">- returns 'super' when the method exists in a supermodule</li>
+</ul>
+</div>
+<div><p>The defined? keyword for super for a method taking arguments</p>
+<ul>
+<li class="pass">- returns nil when no superclass method exists</li>
+<li class="pass">- returns nil from a block when no superclass method exists</li>
+<li class="pass">- returns nil from a #define_method when no superclass method exists</li>
+<li class="pass">- returns nil from a block in a #define_method when no superclass method exists</li>
+<li class="pass">- returns 'super' when a superclass method exists</li>
+<li class="pass">- returns 'super' from a #define_method when a superclass method exists</li>
+</ul>
+</div>
+<div><p>The defined? keyword for super within an included module's method</p>
+<ul>
+<li class="pass">- returns 'super' when a superclass method exists in the including hierarchy</li>
+</ul>
+</div>
+<div><p>The defined? keyword for instance variables</p>
+<ul>
+<li class="pass">- returns 'instance-variable' if assigned</li>
+<li class="pass">- returns nil if not assigned</li>
+</ul>
+</div>
+<div><p>An ensure block inside a begin block</p>
+<ul>
+<li class="pass">- is executed when an exception is raised in it's corresponding begin block</li>
+<li class="pass">- is executed when an exception is raised and rescued in it's corresponding begin block</li>
+<li class="pass">- is executed even when a symbol is thrown in it's corresponding begin block</li>
+<li class="pass">- is executed when nothing is raised or thrown in it's corresponding begin block</li>
+<li class="pass">- has no return value</li>
+</ul>
+</div>
+<div><p>An ensure block inside a method</p>
+<ul>
+<li class="pass">- is executed when an exception is raised in the method</li>
+<li class="pass">- is executed when an exception is raised and rescued in the method</li>
+<li class="pass">- is executed even when a symbol is thrown in the method</li>
+<li class="pass">- has no impact on the method's implicit return value</li>
+<li class="pass">- has an impact on the method's explicit return value</li>
+</ul>
+</div>
+<div><p>``</p>
+<ul>
+<li class="pass">- returns the output of the executed sub-process</li>
+</ul>
+</div>
+<div><p>%x</p>
+<ul>
+<li class="pass">- is the same as ``</li>
+</ul>
+</div>
+<div><p>The __FILE__ pseudo-variable</p>
+<ul>
+<li class="pass">- raises a SyntaxError if assigned to</li>
+<li class="pass">- equals (eval) inside an eval</li>
+</ul>
+</div>
+<div><p>The __FILE__ pseudo-variable</p>
+<ul>
+<li class="pass">- equals the absolute path of a file loaded by an absolute path</li>
+<li class="pass">- equals the relative path of a file loaded by a relative path</li>
+</ul>
+</div>
+<div><p>The __FILE__ pseudo-variable</p>
+<ul>
+<li class="pass">- equals the absolute path of a file loaded by an absolute path</li>
+<li class="pass">- equals the relative path of a file loaded by a relative path</li>
+</ul>
+</div>
+<div><p>The __FILE__ pseudo-variable</p>
+<ul>
+<li class="pass">- equals the absolute path of a file loaded by an absolute path</li>
+<li class="pass">- equals the relative path of a file loaded by a relative path</li>
+</ul>
+</div>
+<div><p>The __FILE__ pseudo-variable</p>
+<ul>
+<li class="pass">- equals the absolute path of a file loaded by an absolute path</li>
+<li class="pass">- equals the relative path of a file loaded by a relative path</li>
+</ul>
+</div>
+<div><p>The for expression</p>
+<ul>
+<li class="pass">- iterates over an Enumerable passing each element to the block</li>
+<li class="pass">- iterates over an Hash passing each key-value pair to the block</li>
+<li class="pass">- iterates over any object responding to 'each'</li>
+<li class="pass">- allows an instance variable as an iterator name</li>
+<li class="pass">- allows a class variable as an iterator name</li>
+<li class="pass">- allows a constant as an iterator name</li>
+<li class="pass">- splats multiple arguments together if there are fewer arguments than values</li>
+<li class="pass">- optionally takes a 'do' after the expression</li>
+<li class="pass">- allows body begin on the same line if do is used</li>
+<li class="pass">- executes code in containing variable scope</li>
+<li class="pass">- executes code in containing variable scope with 'do'</li>
+<li class="pass">- returns expr</li>
+<li class="pass">- breaks out of a loop upon 'break', returning nil</li>
+<li class="pass">- allows 'break' to have an argument which becomes the value of the for expression</li>
+<li class="pass">- starts the next iteration with 'next'</li>
+<li class="pass">- repeats current iteration with 'redo'</li>
+</ul>
+</div>
+<div><p>Hash literal</p>
+<ul>
+<li class="pass">- {} should return an empty hash</li>
+<li class="pass">- {} should return a new hash populated with the given elements</li>
+<li class="pass">- treats empty expressions as nils</li>
+<li class="pass">- freezes string keys on initialization</li>
+<li class="pass">- checks duplicated keys on initialization</li>
+<li class="pass">- accepts a hanging comma</li>
+<li class="pass">- recognizes '=' at the end of the key</li>
+<li class="pass">- with '==>' in the middle raises SyntaxError</li>
+</ul>
+</div>
+<div><p>The if expression</p>
+<ul>
+<li class="pass">- evaluates body if expression is true</li>
+<li class="pass">- does not evaluate body if expression is false</li>
+<li class="pass">- does not evaluate body if expression is empty</li>
+<li class="pass">- does not evaluate else-body if expression is true</li>
+<li class="pass">- evaluates only else-body if expression is false</li>
+<li class="pass">- returns result of then-body evaluation if expression is true</li>
+<li class="pass">- returns result of last statement in then-body if expression is true</li>
+<li class="pass">- returns result of then-body evaluation if expression is true and else part is present</li>
+<li class="pass">- returns result of else-body evaluation if expression is false</li>
+<li class="pass">- returns nil if then-body is empty and expression is true</li>
+<li class="pass">- returns nil if then-body is empty, expression is true and else part is present</li>
+<li class="pass">- returns nil if then-body is empty, expression is true and else part is empty</li>
+<li class="pass">- returns nil if else-body is empty and expression is false</li>
+<li class="pass">- returns nil if else-body is empty, expression is false and then-body is empty</li>
+<li class="pass">- considers an expression with nil result as false</li>
+<li class="pass">- considers a non-nil and non-boolean object in expression result as true</li>
+<li class="pass">- considers a zero integer in expression result as true</li>
+<li class="pass">- allows starting else-body on the same line</li>
+<li class="pass">- evaluates subsequent elsif statements and execute body of first matching</li>
+<li class="pass">- evaluates else-body if no if/elsif statements match</li>
+<li class="pass">- allows 'then' after expression when then-body is on the next line</li>
+<li class="pass">- allows then-body on the same line separated with 'then'</li>
+<li class="pass">- returns nil when then-body on the same line separated with 'then' and expression is false</li>
+<li class="pass">- returns nil when then-body separated by 'then' is empty and expression is true</li>
+<li class="pass">- returns nil when then-body separated by 'then', expression is false and no else part</li>
+<li class="pass">- evaluates then-body when then-body separated by 'then', expression is true and else part is present</li>
+<li class="pass">- evaluates else-body when then-body separated by 'then' and expression is false</li>
+</ul>
+</div>
+<div><p>The if expression with a boolean range ('flip-flop' operator)</p>
+<ul>
+<li class="pass">- mimics an awk conditional with a single-element inclusive-end range</li>
+<li class="pass">- mimics an awk conditional with a many-element inclusive-end range</li>
+<li class="pass">- mimics a sed conditional with a zero-element exclusive-end range</li>
+<li class="pass">- mimics a sed conditional with a many-element exclusive-end range</li>
+<li class="pass">- allows combining two flip-flops</li>
+<li class="pass">- evaluates the first conditions lazily with inclusive-end range</li>
+<li class="pass">- evaluates the first conditions lazily with exclusive-end range</li>
+<li class="pass">- evaluates the second conditions lazily with inclusive-end range</li>
+<li class="pass">- evaluates the second conditions lazily with exclusive-end range</li>
+<li class="pass">- scopes state by flip-flop</li>
+<li class="pass">- keeps flip-flops from interfering</li>
+</ul>
+</div>
+<div><p>The postfix if form</p>
+<ul>
+<li class="pass">- evaluates statement if expression is true</li>
+<li class="pass">- does not evaluate statement if expression is false</li>
+<li class="pass">- returns result of expression if value is true</li>
+<li class="pass">- returns nil if expression is false</li>
+<li class="pass">- considers a nil expression as false</li>
+<li class="pass">- considers a non-nil object as true</li>
+<li class="pass">- evaluates then-body in containing scope</li>
+<li class="pass">- evaluates else-body in containing scope</li>
+<li class="pass">- evaluates elsif-body in containing scope</li>
+</ul>
+</div>
+<div><p>The if expression</p>
+<ul>
+<li class="pass">- allows starting then-body on the same line if colon is used</li>
+<li class="pass">- allows both then- and else-bodies start on the same line (with colon after expression)</li>
+<li class="pass">- allows ':' after expression when then-body is on the next line</li>
+<li class="pass">- allows then-body on the same line separated with ':'</li>
+<li class="pass">- returns nil when then-body on the same line separated with ':' and expression is false</li>
+<li class="pass">- returns nil when then-body separated by ':' is empty and expression is true</li>
+<li class="pass">- returns nil when then-body separated by ':', expression is false and no else part</li>
+<li class="pass">- evaluates then-body when then-body separated by ':', expression is true and else part is present</li>
+<li class="pass">- evaluates else-body when then-body separated by ':' and expression is false</li>
+<li class="pass">- allows elsif-body at the same line separated by ':' or 'then'</li>
+</ul>
+</div>
+<div><p>The __LINE__ pseudo-variable</p>
+<ul>
+<li class="pass">- raises a SyntaxError if assigned to</li>
+<li class="pass">- equals the line number of the text inside an eval</li>
+</ul>
+</div>
+<div><p>The __LINE__ pseudo-variable</p>
+<ul>
+<li class="pass">- equals the line number of the text in a loaded file</li>
+</ul>
+</div>
+<div><p>The __LINE__ pseudo-variable</p>
+<ul>
+<li class="pass">- equals the line number of the text in a loaded file</li>
+</ul>
+</div>
+<div><p>The __LINE__ pseudo-variable</p>
+<ul>
+<li class="pass">- equals the line number of the text in a loaded file</li>
+</ul>
+</div>
+<div><p>The __LINE__ pseudo-variable</p>
+<ul>
+<li class="pass">- equals the line number of the text in a loaded file</li>
+</ul>
+</div>
+<div><p>The loop expression</p>
+<ul>
+<li class="pass">- repeats the given block until a break is called</li>
+<li class="pass">- executes code in its own scope</li>
+<li class="pass">- returns the value passed to break if interrupted by break</li>
+<li class="pass">- returns nil if interrupted by break with no arguments</li>
+<li class="pass">- skips to end of body with next</li>
+<li class="pass">- restarts the current iteration with redo</li>
+<li class="pass">- uses a spaghetti nightmare of redo, next and break</li>
+</ul>
+</div>
+<div><p>The !~ operator</p>
+<ul>
+<li class="pass">- evaluates as not(=~)</li>
+</ul>
+</div>
+<div><p>The =~ operator</p>
+<ul>
+<li class="pass">- calls the =~ method</li>
+</ul>
+</div>
+<div><p>self in a metaclass body (class << obj)</p>
+<ul>
+<li class="pass">- is TrueClass for true</li>
+<li class="pass">- is FalseClass for false</li>
+<li class="pass">- is NilClass for nil</li>
+<li class="pass">- raises a TypeError for numbers</li>
+<li class="pass">- raises a TypeError for symbols</li>
+<li class="pass">- is a singleton Class instance</li>
+</ul>
+</div>
+<div><p>A constant on a metaclass</p>
+<ul>
+<li class="pass">- can be accessed after the metaclass body is reopened</li>
+<li class="pass">- can be accessed via self::CONST</li>
+<li class="pass">- can be accessed via const_get</li>
+<li class="pass">- is not defined on the object's class</li>
+<li class="pass">- is not defined in the metaclass opener's scope</li>
+<li class="pass">- cannot be accessed via object::CONST</li>
+<li class="pass">- raises a NameError for anonymous_module::CONST</li>
+<li class="pass">- appears in the metaclass constant list</li>
+<li class="pass">- does not appear in the object's class constant list</li>
+<li class="pass">- is not preserved when the object is duped</li>
+<li class="pass">- is preserved when the object is cloned</li>
+</ul>
+</div>
+<div><p>calling methods on the metaclass</p>
+<ul>
+<li class="pass">- calls a method on the metaclass</li>
+<li class="pass">- calls a method on the instance's metaclass</li>
+<li class="pass">- calls a method in deeper chains of metaclasses</li>
+</ul>
+</div>
+<div><p>The module keyword</p>
+<ul>
+<li class="pass">- creates a new module with a non-qualified constant name</li>
+<li class="pass">- creates a new module with a qualified constant name</li>
+<li class="pass">- creates a new module with a variable qualified constant name</li>
+<li class="pass">- reopens an existing module</li>
+<li class="pass">- reopens a module included in Object</li>
+<li class="pass">- raises a TypeError if the constant is a Class</li>
+<li class="pass">- raises a TypeError if the constant is a String</li>
+<li class="pass">- raises a TypeError if the constant is a Fixnum</li>
+<li class="pass">- raises a TypeError if the constant is nil</li>
+<li class="pass">- raises a TypeError if the constant is true</li>
+<li class="pass">- raises a TypeError if the constant is false</li>
+</ul>
+</div>
+<div><p>The next statement from within the block</p>
+<ul>
+<li class="pass">- ends block execution</li>
+<li class="pass">- causes block to return nil if invoked without arguments</li>
+<li class="pass">- causes block to return nil if invoked with an empty expression</li>
+<li class="pass">- returns the argument passed</li>
+<li class="pass">- returns to the invoking method</li>
+<li class="pass">- returns to the invoking method, with the specified value</li>
+<li class="pass">- returns to the currently yielding method in case of chained calls</li>
+<li class="pass">- causes ensure blocks to run</li>
+<li class="pass">- skips following code outside an exception block</li>
+</ul>
+</div>
+<div><p>The next statement in a while loop</p>
+<ul>
+<li class="pass">- causes nested ensure blocks to run</li>
+<li class="pass">- causes ensure blocks to run when mixed with break</li>
+</ul>
+</div>
+<div><p>The next statement in a while loop when not passed an argument</p>
+<ul>
+<li class="pass">- causes ensure blocks to run</li>
+<li class="pass">- causes ensure blocks to run when nested in an block</li>
+</ul>
+</div>
+<div><p>The next statement in a while loop when passed an argument</p>
+<ul>
+<li class="pass">- causes ensure blocks to run</li>
+<li class="pass">- causes ensure blocks to run when nested in an block</li>
+</ul>
+</div>
+<div><p>The next statement in an until loop</p>
+<ul>
+<li class="pass">- causes nested ensure blocks to run</li>
+<li class="pass">- causes ensure blocks to run when mixed with break</li>
+</ul>
+</div>
+<div><p>The next statement in an until loop when not passed an argument</p>
+<ul>
+<li class="pass">- causes ensure blocks to run</li>
+<li class="pass">- causes ensure blocks to run when nested in an block</li>
+</ul>
+</div>
+<div><p>The next statement in an until loop when passed an argument</p>
+<ul>
+<li class="pass">- causes ensure blocks to run</li>
+<li class="pass">- causes ensure blocks to run when nested in an block</li>
+</ul>
+</div>
+<div><p>The next statement in a loop</p>
+<ul>
+<li class="pass">- causes nested ensure blocks to run</li>
+<li class="pass">- causes ensure blocks to run when mixed with break</li>
+</ul>
+</div>
+<div><p>The next statement in a loop when not passed an argument</p>
+<ul>
+<li class="pass">- causes ensure blocks to run</li>
+<li class="pass">- causes ensure blocks to run when nested in an block</li>
+</ul>
+</div>
+<div><p>The next statement in a loop when passed an argument</p>
+<ul>
+<li class="pass">- causes ensure blocks to run</li>
+<li class="pass">- causes ensure blocks to run when nested in an block</li>
+</ul>
+</div>
+<div><p>Assignment via next</p>
+<ul>
+<li class="pass">- assigns objects</li>
+<li class="pass">- assigns splatted objects</li>
+<li class="pass">- assigns objects to a splatted reference</li>
+<li class="pass">- assigns splatted objects to a splatted reference via a splatted yield</li>
+<li class="pass">- assigns objects to multiple variables</li>
+<li class="pass">- assigns splatted objects to multiple variables</li>
+</ul>
+</div>
+<div><p>The not keyword</p>
+<ul>
+<li class="pass">- negates a `true' value</li>
+<li class="pass">- negates a `false' value</li>
+<li class="pass">- accepts an argument</li>
+<li class="pass">- returns false if the argument is true</li>
+<li class="pass">- returns true if the argument is false</li>
+<li class="pass">- returns true if the argument is nil</li>
+</ul>
+</div>
+<div><p>The `!' keyword</p>
+<ul>
+<li class="pass">- negates a `true' value</li>
+<li class="pass">- negates a `false' value</li>
+<li class="pass">- turns a truthful object into `true'</li>
+<li class="pass">- turns a not truthful object into `false'</li>
+</ul>
+</div>
+<div><p>Ruby numbers in various ways</p>
+<ul>
+<li class="pass">- the standard way</li>
+<li class="pass">- with underscore separations</li>
+<li class="pass">- with some decimals</li>
+<li class="pass">- with decimals but no integer part should be a SyntaxError</li>
+<li class="pass">- using the e expression</li>
+<li class="pass">- the hexdecimal notation</li>
+<li class="pass">- the binary notation</li>
+<li class="pass">- octal representation</li>
+<li class="pass">- character to numeric shortcut</li>
+<li class="pass">- character with control character to numeric shortcut</li>
+</ul>
+</div>
+<div><p>The || operator</p>
+<ul>
+<li class="pass">- evaluates to true if any of its operands are true</li>
+<li class="pass">- evaluated to false if all of its operands are false</li>
+<li class="pass">- is evaluated before assignment operators</li>
+<li class="pass">- has a lower precedence than the && operator</li>
+<li class="pass">- treats empty expressions as nil</li>
+<li class="pass">- has a higher precedence than 'break' in 'break true || false'</li>
+<li class="pass">- has a higher precedence than 'next' in 'next true || false'</li>
+<li class="pass">- has a higher precedence than 'return' in 'return true || false'</li>
+</ul>
+</div>
+<div><p>The or operator</p>
+<ul>
+<li class="pass">- evaluates to true if any of its operands are true</li>
+<li class="pass">- is evaluated after variables are assigned</li>
+<li class="pass">- has a lower precedence than the || operator</li>
+<li class="pass">- treats empty expressions as nil</li>
+<li class="pass">- has a lower precedence than 'break' in 'break true or false'</li>
+<li class="pass">- has a lower precedence than 'next' in 'next true or false'</li>
+<li class="pass">- has a lower precedence than 'return' in 'return true or false'</li>
+</ul>
+</div>
+<div><p>A method call</p>
+<ul>
+<li class="pass">- evaluates the receiver first</li>
+<li class="pass">- evaluates arguments after receiver</li>
+<li class="pass">- evaluates arguments left-to-right</li>
+<li class="pass">- evaluates block pass after arguments</li>
+<li class="pass">- evaluates block pass after receiver</li>
+</ul>
+</div>
+<div><p>Operators</p>
+<ul>
+<li class="pass">- ! ~ + is right-associative</li>
+<li class="pass">- ! ~ + have a higher precedence than **</li>
+<li class="pass">- ** is right-associative</li>
+<li class="pass">- ** has higher precedence than unary minus</li>
+<li class="pass">- unary minus is right-associative</li>
+<li class="pass">- unary minus has higher precedence than * / %</li>
+<li class="pass">- * / % are left-associative</li>
+<li class="pass">- * / % have higher precedence than + -</li>
+<li class="pass">- + - are left-associative</li>
+<li class="pass">- + - have higher precedence than >> <<</li>
+<li class="pass">- >> << are left-associative</li>
+<li class="pass">- >> << have higher precedence than &</li>
+<li class="pass">- & is left-associative</li>
+<li class="pass">- & has higher precedence than ^ |</li>
+<li class="pass">- ^ | are left-associative</li>
+<li class="pass">- ^ | have higher precedence than <= < > >=</li>
+<li class="pass">- <= < > >= are left-associative</li>
+<li class="pass">- <= < > >= have higher precedence than <=> == === != =~ !~</li>
+<li class="pass">- <=> == === != =~ !~ are non-associative</li>
+<li class="pass">- <=> == === != =~ !~ have higher precedence than &&</li>
+<li class="pass">- && is left-associative</li>
+<li class="pass">- && has higher precedence than ||</li>
+<li class="pass">- || is left-associative</li>
+<li class="pass">- || has higher precedence than .. ...</li>
+<li class="pass">- .. ... are non-associative</li>
+<li class="pass">- ? : is right-associative</li>
+<li class="pass">- ? : has higher precedence than rescue</li>
+<li class="pass">- rescue is left-associative</li>
+<li class="pass">- rescue has higher precedence than =</li>
+<li class="pass">- = %= /= -= += |= &= >>= <<= *= &&= ||= **= are right-associative</li>
+<li class="pass">- = %= /= -= += |= &= >>= <<= *= &&= ||= **= have higher precedence than defined? operator</li>
+<li class="pass">- defined? is non-associative</li>
+<li class="pass">- defined? has higher precedence than not</li>
+<li class="pass">- not is right-associative</li>
+<li class="pass">- not has higher precedence than or/and</li>
+<li class="pass">- or/and are left-associative</li>
+<li class="pass">- or/and have higher precedence than if unless while until modifiers</li>
+<li class="pass">- if unless while until are non-associative</li>
+</ul>
+</div>
+<div><p>The DATA constant</p>
+<ul>
+<li class="pass">- exists when the main script contains __END__</li>
+<li class="fail">- does not exist when the main script contains no __END__ (<a href="#details-1">FAILED - 1</a>)</li>
+<li class="pass">- does not exist when an included file has a __END__</li>
+<li class="pass">- does not change when an included files also has a __END__</li>
+<li class="pass">- is included in an otherwise empty file</li>
+</ul>
+</div>
+<div><p>Predefined global $~</p>
+<ul>
+<li class="pass">- is set to contain the MatchData object of the last match if successful</li>
+<li class="pass">- is set to nil if the last match was unsuccessful</li>
+<li class="pass">- is set at the method-scoped level rather than block-scoped</li>
+<li class="pass">- raises an error if assigned an object not nil or instanceof MatchData</li>
+<li class="pass">- changes the value of derived capture globals when assigned</li>
+<li class="pass">- changes the value of the derived preceding match global</li>
+<li class="pass">- changes the value of the derived following match global</li>
+<li class="pass">- changes the value of the derived full match global</li>
+</ul>
+</div>
+<div><p>Predefined global $&</p>
+<ul>
+<li class="pass">- is equivalent to MatchData#[0] on the last match $~</li>
+</ul>
+</div>
+<div><p>Predefined global $`</p>
+<ul>
+<li class="pass">- is equivalent to MatchData#pre_match on the last match $~</li>
+</ul>
+</div>
+<div><p>Predefined global $'</p>
+<ul>
+<li class="pass">- is equivalent to MatchData#post_match on the last match $~</li>
+</ul>
+</div>
+<div><p>Predefined global $+</p>
+<ul>
+<li class="pass">- is equivalent to $~.captures.last</li>
+<li class="pass">- captures the last non nil capture</li>
+</ul>
+</div>
+<div><p>Predefined globals $1..N</p>
+<ul>
+<li class="pass">- are equivalent to $~[N]</li>
+<li class="pass">- are nil unless a match group occurs</li>
+</ul>
+</div>
+<div><p>Predefined global $stdout</p>
+<ul>
+<li class="pass">- is the same as $defout</li>
+<li class="pass">- is the same as $DEFAULT_OUTPUT from 'English' library</li>
+<li class="pass">- raises TypeError error if assigned to nil</li>
+<li class="pass">- raises TypeError error if assigned to object that doesn't respond to #write</li>
+</ul>
+</div>
+<div><p>Predefined global $!</p>
+<ul>
+<li class="pass">- needs to be reviewed for spec completeness</li>
+</ul>
+</div>
+<div><p>Predefined global $/</p>
+<ul>
+<li class="pass">- can be assigned a String</li>
+<li class="pass">- can be assigned nil</li>
+<li class="pass">- returns the value assigned</li>
+<li class="pass">- does not call #to_str to convert the object to a String</li>
+<li class="pass">- raises a TypeError if assigned a Fixnum</li>
+<li class="pass">- raises a TypeError if assigned a boolean</li>
+</ul>
+</div>
+<div><p>Predefined global $-0</p>
+<ul>
+<li class="pass">- can be assigned a String</li>
+<li class="pass">- can be assigned nil</li>
+<li class="pass">- returns the value assigned</li>
+</ul>
+</div>
+<div><p>Predefined global $,</p>
+<ul>
+<li class="pass">- defaults to nil</li>
+<li class="pass">- raises TypeError if assigned a non-String</li>
+</ul>
+</div>
+<div><p>Predefined global $_</p>
+<ul>
+<li class="pass">- is set to the last line read by e.g. StringIO#gets</li>
+<li class="pass">- is set at the method-scoped level rather than block-scoped</li>
+<li class="pass">- is Thread-local</li>
+<li class="pass">- can be assigned any value</li>
+</ul>
+</div>
+<div><p>Execution variable $:</p>
+<ul>
+<li class="pass">- is initialized to an array of strings</li>
+<li class="pass">- includes the current directory</li>
+<li class="fail">- does not include '.' when the taint check level > 1 (<a href="#details-2">FAILED - 2</a>)</li>
+<li class="pass">- is the same object as $LOAD_PATH and $-I</li>
+<li class="pass">- can be changed via <<</li>
+<li class="pass">- is read-only</li>
+</ul>
+</div>
+<div><p>Global variable $"</p>
+<ul>
+<li class="pass">- is an alias for $LOADED_FEATURES</li>
+<li class="pass">- is read-only</li>
+</ul>
+</div>
+<div><p>Global variable $<</p>
+<ul>
+<li class="pass">- is read-only</li>
+</ul>
+</div>
+<div><p>Global variable $FILENAME</p>
+<ul>
+<li class="pass">- is read-only</li>
+</ul>
+</div>
+<div><p>Global variable $?</p>
+<ul>
+<li class="pass">- is read-only</li>
+</ul>
+</div>
+<div><p>Global variable $-a</p>
+<ul>
+<li class="pass">- is read-only</li>
+</ul>
+</div>
+<div><p>Global variable $-l</p>
+<ul>
+<li class="pass">- is read-only</li>
+</ul>
+</div>
+<div><p>Global variable $-p</p>
+<ul>
+<li class="pass">- is read-only</li>
+</ul>
+</div>
+<div><p>Global variable $-d</p>
+<ul>
+<li class="pass">- is an alias of $DEBUG</li>
+</ul>
+</div>
+<div><p>Global variable $-v</p>
+<ul>
+<li class="fail">- is an alias of $VERBOSE (<a href="#details-3">FAILED - 3</a>)</li>
+</ul>
+</div>
+<div><p>Global variable $-w</p>
+<ul>
+<li class="fail">- is an alias of $VERBOSE (<a href="#details-4">FAILED - 4</a>)</li>
+</ul>
+</div>
+<div><p>Global variable $0</p>
+<ul>
+<li class="pass">- returns the program name</li>
+<li class="pass">- returns the given value when set</li>
+</ul>
+</div>
+<div><p>The predefined standard objects</p>
+<ul>
+<li class="pass">- includes ARGF</li>
+<li class="pass">- includes ARGV</li>
+<li class="pass">- includes a hash-like object ENV</li>
+</ul>
+</div>
+<div><p>The predefined standard object nil</p>
+<ul>
+<li class="pass">- is an instance of NilClass</li>
+<li class="pass">- raises a SyntaxError if assigned to</li>
+</ul>
+</div>
+<div><p>The predefined standard object true</p>
+<ul>
+<li class="pass">- is an instance of TrueClass</li>
+<li class="pass">- raises a SyntaxError if assigned to</li>
+</ul>
+</div>
+<div><p>The predefined standard object false</p>
+<ul>
+<li class="pass">- is an instance of FalseClass</li>
+<li class="pass">- raises a SyntaxError if assigned to</li>
+</ul>
+</div>
+<div><p>The self pseudo-variable</p>
+<ul>
+<li class="pass">- raises a SyntaxError if assigned to</li>
+</ul>
+</div>
+<div><p>The predefined global constants</p>
+<ul>
+<li class="pass">- includes TRUE</li>
+<li class="pass">- includes FALSE</li>
+<li class="pass">- includes NIL</li>
+<li class="pass">- includes STDIN</li>
+<li class="pass">- includes STDOUT</li>
+<li class="pass">- includes STDERR</li>
+<li class="pass">- includes RUBY_VERSION</li>
+<li class="pass">- includes RUBY_RELEASE_DATE</li>
+<li class="pass">- includes RUBY_PLATFORM</li>
+<li class="pass">- includes PLATFORM</li>
+<li class="pass">- includes TOPLEVEL_BINDING</li>
+</ul>
+</div>
+<div><p>Processing RUBYOPT</p>
+<ul>
+<li class="pass">- adds the -I path to $LOAD_PATH</li>
+<li class="pass">- sets $DEBUG to true for '-d'</li>
+<li class="pass">- sets $VERBOSE to true for '-w'</li>
+<li class="pass">- sets $VERBOSE to true for '-W'</li>
+<li class="pass">- sets $VERBOSE to nil for '-W0'</li>
+<li class="pass">- sets $VERBOSE to false for '-W1'</li>
+<li class="pass">- sets $VERBOSE to true for '-W2'</li>
+<li class="pass">- requires the file for '-r'</li>
+<li class="fail">- sets $KCODE to 'NONE' with '-K' (<a href="#details-5">FAILED - 5</a>)</li>
+<li class="pass">- sets $KCODE to 'NONE' with '-Ka'</li>
+<li class="pass">- sets $KCODE to 'NONE' with '-KA'</li>
+<li class="pass">- sets $KCODE to 'NONE' with '-Kn'</li>
+<li class="pass">- sets $KCODE to 'NONE' with '-KN'</li>
+<li class="pass">- sets $KCODE to 'EUC' with '-Ke'</li>
+<li class="pass">- sets $KCODE to 'EUC' with '-KE'</li>
+<li class="pass">- sets $KCODE to 'UTF8' with '-Ku'</li>
+<li class="pass">- sets $KCODE to 'UTF8' with '-KU'</li>
+<li class="pass">- sets $KCODE to 'SJIS' with '-Ks'</li>
+<li class="pass">- sets $KCODE to 'SJIS' with '-KS'</li>
+<li class="fail">- raises a RuntimeError for '-a' (<a href="#details-6">FAILED - 6</a>)</li>
+ aborting example: Processing RUBYOPT raises a RuntimeError for '-p'
+
+Process aborted!

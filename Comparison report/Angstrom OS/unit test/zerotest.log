@@ -1,0 +1,7 @@
+jruby 1.6.8 (ruby-1.8.7-p357) (2013-09-03 0f73d7b) (OpenJDK Zero VM 1.6.0_24) [linux-arm-java]
+root@beaglebone:/media/Aman/jrubysetup/jruby# jruby spec/mspec/bin/mspec ci -f h > oracle. test    test.jt  html[1P[1P[1P[1P[1P[1P[4hz[4l[4he[4l[4hr[4l[4ho[4l
+/media/Aman/jrubysetup/jruby/spec/mspec/lib/mspec/helpers/ruby_exe.rb:110 warning: executable? does not in this environment and will return a dummy value
+(eval):1 warning: global variable `$-v' not initialized
+(eval):1 warning: global variable `$-w' not initialized
+
+

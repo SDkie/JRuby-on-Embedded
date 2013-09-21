@@ -1,0 +1,29 @@
+bench_neural_net.rb
+WARNING: more than one JRuby JAR found in lib directory
+/home/root/Desktop/jruby/lib/ruby/1.8/benchmark.rb:293 warning: multiple values for a block parameter (0 for 1)
+NameError: uninitialized constant NeuralNetwork::Random
+  const_missing at org/jruby/RubyModule.java:2647
+     initialize at /home/root/Desktop/rubybenchLN/time/bench_neural_net.rb:75
+       __file__ at /home/root/Desktop/rubybenchLN/time/bench_neural_net.rb:120
+        measure at /home/root/Desktop/jruby/lib/ruby/1.8/benchmark.rb:293
+       __file__ at /home/root/Desktop/rubybenchLN/time/bench_neural_net.rb:119
+          times at org/jruby/RubyFixnum.java:252
+         (root) at /home/root/Desktop/rubybenchLN/time/bench_neural_net.rb:118
+
+bench_fib_complex.rb
+WARNING: more than one JRuby JAR found in lib directory
+ArgumentError: Illformed requirement [">= 0"]
+          parse at /home/root/Desktop/jruby/lib/ruby/site_ruby/1.8/rubygems/requirement.rb:81
+     initialize at /home/root/Desktop/jruby/lib/ruby/site_ruby/1.8/rubygems/requirement.rb:106
+           map! at org/jruby/RubyArray.java:2379
+     initialize at /home/root/Desktop/jruby/lib/ruby/site_ruby/1.8/rubygems/requirement.rb:106
+        default at /home/root/Desktop/jruby/lib/ruby/site_ruby/1.8/rubygems/requirement.rb:62
+  Specification at /home/root/Desktop/jruby/lib/ruby/site_ruby/1.8/rubygems/specification.rb:83
+         (root) at /home/root/Desktop/jruby/lib/ruby/site_ruby/1.8/rubygems/specification.rb:29
+         (root) at /home/root/Desktop/jruby/lib/ruby/site_ruby/1.8/rubygems/specification.rb:51
+        require at org/jruby/RubyKernel.java:1062
+         (root) at /home/root/Desktop/jruby/lib/ruby/site_ruby/1.8/rubygems/defaults/jruby.rb:1273
+        require at org/jruby/RubyKernel.java:1062
+         (root) at bench_fib_complex.rb:1
+
+

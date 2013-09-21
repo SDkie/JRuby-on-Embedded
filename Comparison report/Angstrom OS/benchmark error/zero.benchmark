@@ -1,0 +1,111 @@
+bench_neural_net.rb
+WARNING: more than one JRuby JAR found in lib directory
+/home/root/Desktop/jruby/lib/ruby/1.8/benchmark.rb:293 warning: multiple values for a block parameter (0 for 1)
+NameError: uninitialized constant NeuralNetwork::Random
+  const_missing at org/jruby/RubyModule.java:2647
+     initialize at /home/root/Desktop/rubybenchLN/time/bench_neural_net.rb:75
+       __file__ at /home/root/Desktop/rubybenchLN/time/bench_neural_net.rb:120
+        measure at /home/root/Desktop/jruby/lib/ruby/1.8/benchmark.rb:293
+       __file__ at /home/root/Desktop/rubybenchLN/time/bench_neural_net.rb:119
+          times at org/jruby/RubyFixnum.java:252
+         (root) at /home/root/Desktop/rubybenchLN/time/bench_neural_net.rb:118
+
+bench_nsieve.rb
+WARNING: more than one JRuby JAR found in lib directory
+Primes up to    40000     4203
+Primes up to    20000     2262
+Primes up to    10000     1229
+%10.6u %10.6y %10.6t %10.6r
+Primes up to    40000     4203
+Primes up to    20000     2262
+Primes up to    10000     1229
+%10.6u %10.6y %10.6t %10.6r
+
+bench_quicksort.rb
+WARNING: more than one JRuby JAR found in lib directory
+                               user     system      total        real
+350-element quicksort    ArgumentError: too few arguments
+          % at org/jruby/RubyString.java:1136
+    sprintf at org/jruby/RubyKernel.java:984
+     format at /home/root/Desktop/jruby/lib/ruby/1.8/benchmark.rb:506
+       item at /home/root/Desktop/jruby/lib/ruby/1.8/benchmark.rb:381
+   __file__ at /home/root/Desktop/rubybenchLN/time/bench_quicksort.rb:22
+      times at org/jruby/RubyFixnum.java:252
+   __file__ at /home/root/Desktop/rubybenchLN/time/bench_quicksort.rb:21
+  benchmark at /home/root/Desktop/jruby/lib/ruby/1.8/benchmark.rb:177
+         bm at /home/root/Desktop/jruby/lib/ruby/1.8/benchmark.rb:207
+     (root) at /home/root/Desktop/rubybenchLN/time/bench_quicksort.rb:20
+
+bench_richards.rb
+WARNING: more than one JRuby JAR found in lib directory
+QueueCount = 23246
+HoldCount = 9297
+%10.6u %10.6y %10.6t %10.6r
+QueueCount = 23246
+HoldCount = 9297
+%10.6u %10.6y %10.6t %10.6r
+QueueCount = 23246
+HoldCount = 9297
+%10.6u %10.6y %10.6t %10.6r
+QueueCount = 23246
+HoldCount = 9297
+%10.6u %10.6y %10.6t %10.6r
+QueueCount = 23246
+HoldCount = 9297
+%10.6u %10.6y %10.6t %10.6r
+
+bench_sieve.rb
+WARNING: more than one JRuby JAR found in lib directory
+"jruby 1.6.8 (ruby-1.8.7-p357) (2013-09-03 0f73d7b) (OpenJDK Zero VM 1.6.0_24) [linux-arm-java]"
+                                    user     system      total        real
+100K primes                   ArgumentError: too few arguments
+          % at org/jruby/RubyString.java:1136
+    sprintf at org/jruby/RubyKernel.java:984
+     format at /home/root/Desktop/jruby/lib/ruby/1.8/benchmark.rb:506
+       item at /home/root/Desktop/jruby/lib/ruby/1.8/benchmark.rb:381
+   __file__ at /home/root/Desktop/rubybenchLN/time/bench_sieve.rb:10
+  benchmark at /home/root/Desktop/jruby/lib/ruby/1.8/benchmark.rb:177
+         bm at /home/root/Desktop/jruby/lib/ruby/1.8/benchmark.rb:207
+   __file__ at /home/root/Desktop/rubybenchLN/time/bench_sieve.rb:9
+      times at org/jruby/RubyFixnum.java:252
+     (root) at /home/root/Desktop/rubybenchLN/time/bench_sieve.rb:7
+
+bench_tak.rb
+WARNING: more than one JRuby JAR found in lib directory
+      user     system      total        real
+ArgumentError: too few arguments
+          % at org/jruby/RubyString.java:1136
+    sprintf at org/jruby/RubyKernel.java:984
+     format at /home/root/Desktop/jruby/lib/ruby/1.8/benchmark.rb:506
+       item at /home/root/Desktop/jruby/lib/ruby/1.8/benchmark.rb:381
+   __file__ at /home/root/Desktop/rubybenchLN/time/bench_tak.rb:17
+      times at org/jruby/RubyFixnum.java:252
+   __file__ at /home/root/Desktop/rubybenchLN/time/bench_tak.rb:16
+  benchmark at /home/root/Desktop/jruby/lib/ruby/1.8/benchmark.rb:177
+         bm at /home/root/Desktop/jruby/lib/ruby/1.8/benchmark.rb:207
+     (root) at /home/root/Desktop/rubybenchLN/time/bench_tak.rb:15
+
+
+bench_fib_recursive.rb
+WARNING: more than one JRuby JAR found in lib directory
+%10.6u %10.6y %10.6t %10.6r
+%10.6u %10.6y %10.6t %10.6r
+%10.6u %10.6y %10.6t %10.6r
+%10.6u %10.6y %10.6t %10.6r
+%10.6u %10.6y %10.6t %10.6r
+
+bench_fib_complex.rb
+WARNING: more than one JRuby JAR found in lib directory
+ArgumentError: Illformed requirement [">= 0"]
+          parse at /home/root/Desktop/jruby/lib/ruby/site_ruby/1.8/rubygems/requirement.rb:81
+     initialize at /home/root/Desktop/jruby/lib/ruby/site_ruby/1.8/rubygems/requirement.rb:106
+           map! at org/jruby/RubyArray.java:2379
+     initialize at /home/root/Desktop/jruby/lib/ruby/site_ruby/1.8/rubygems/requirement.rb:106
+        default at /home/root/Desktop/jruby/lib/ruby/site_ruby/1.8/rubygems/requirement.rb:62
+  Specification at /home/root/Desktop/jruby/lib/ruby/site_ruby/1.8/rubygems/specification.rb:83
+         (root) at /home/root/Desktop/jruby/lib/ruby/site_ruby/1.8/rubygems/specification.rb:29
+         (root) at /home/root/Desktop/jruby/lib/ruby/site_ruby/1.8/rubygems/specification.rb:51
+        require at org/jruby/RubyKernel.java:1062
+         (root) at /home/root/Desktop/jruby/lib/ruby/site_ruby/1.8/rubygems/defaults/jruby.rb:1273
+        require at org/jruby/RubyKernel.java:1062
+         (root) at /home/root/Desktop/rubybenchLN/ips/bench_fib_complex.rb:1
