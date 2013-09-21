@@ -1,0 +1,7 @@
+	I cross-compiled the Ruby directly by building it on the target platform. i.e. I build it the on ARM platform directly the way we do it for the Intel platform. 
+
+Compiling steps-
+	autoconf
+	./configure
+	make
+	make install
